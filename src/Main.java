@@ -1,15 +1,55 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import models.Doctor;
+import models.Patient;
+import models.AdmissionDetails;
+import models.Prescription;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // STEP 1: Create a patient with no admission details yet
+        Patient p = new Patient(
+                "P001",
+                "Rahul Sharma",
+                28,
+                "Male",
+                "9876543210",
+                "PT1001",
+                new ArrayList<>(),    // empty medical history
+                null                  // not admitted
+        );
+
+        p.displayInfo(); // Test 1: Should show Admission Details = None
+
+        System.out.println("----- Admitting Patient -----");
+
+        // STEP 2: Admit the patient
+        p.admitPatient("General Ward", "12A", "Bed-4", "Fever Observation");
+
+        p.displayInfo(); // Test 2: Should show admission details
+
+        System.out.println("----- Discharging Patient -----");
+
+        // STEP 3: Discharge the patient
+        p.dischargePatient();
+
+        p.displayInfo(); // Test 3: Should show discharged status + timestamp
+
+        // after admitting and consulting tests you already have:
+        List<String> meds = new ArrayList<>();
+        meds.add("Paracetamol 500mg");
+        meds.add("Amoxicillin 250mg");
+
+        Doctor dr = new Doctor("D001","Ramesh Kumar",45,"Male","9123456780","DR100","General Medicine", new HashMap<>());
+        p = new Patient("P002", "Anita Roy", 34, "Female", "9012345678", "PT200", new ArrayList<>(), null);
+
+        Prescription pr = dr.prescribeMedicine(p, meds, "Take after food, twice a day", true);
+        pr.displayPrescription();
+        p.displayInfo(); // to see the note in medical history
+
+
     }
 }

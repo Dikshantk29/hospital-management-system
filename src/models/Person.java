@@ -1,6 +1,6 @@
 package models;
 
-abstract class Person {
+public abstract class Person {
     private String id;
     private String name;
     private int age;
@@ -15,9 +15,10 @@ abstract class Person {
         this.contactNumber = contactNumber;
     }
 
+    // Public abstract so subclasses across packages can implement it
+    public abstract void displayInfo();
 
-    abstract void displayInfo();
-
+    // Convenience display (keeps your earlier behaviour)
     public void getDetails() {
         System.out.println("=========== Person Details ===========");
         System.out.println("ID: " + id);
@@ -25,18 +26,15 @@ abstract class Person {
         System.out.println("Age: " + age);
         System.out.println("Gender: " + gender);
         System.out.println("Contact Number: " + contactNumber);
-
-
     }
 
-
-    //getter
-    public String getName() {
-        return name;
-    }
-
+    // Getters (all fields)
     public String getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getAge() {
@@ -51,13 +49,12 @@ abstract class Person {
         return contactNumber;
     }
 
-
-    //setters
-    public void setAge(int age){
+    // Setters (only for age and contactNumber as you decided)
+    public void setAge(int age) {
         this.age = age;
     }
-    public void setContactNumber(String contactNumber){
+
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
-
 }

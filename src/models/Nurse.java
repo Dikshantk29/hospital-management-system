@@ -14,7 +14,7 @@ public class Nurse extends Person {
 
 
     @Override
-    void displayInfo() {
+    public void displayInfo() {
 
     }
 
