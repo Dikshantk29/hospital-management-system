@@ -49,7 +49,7 @@ public abstract class Person {
         return contactNumber;
     }
 
-    // Setters (only for age and contactNumber as you decided)
+    // Setters (only for age and contactNumber as i decided)
     public void setAge(int age) {
         this.age = age;
     }

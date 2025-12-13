@@ -1,28 +1,34 @@
 package models;
+import java.time.LocalDateTime;
 
-import java.sql.Time;
-import java.util.Date;
 
 public class Appointment {
 
     private String appointmentId;
-    private String patient;
-    private String doctor;
-    private Date date;
-    private Time time;
+    private Patient patient;
+    private Doctor doctor;
+    private LocalDateTime dateTime;
     private String status;
 
-    public Appointment(String appointmentId, String patient, String doctor, Date date, Time time, String status) {
+    public Appointment(String appointmentId, Patient patient, Doctor doctor, LocalDateTime dateTime) {
         this.appointmentId = appointmentId;
         this.patient = patient;
         this.doctor = doctor;
-        this.date = date;
-        this.time = time;
-        this.status = status;
-
+        this.dateTime = dateTime;
+        this.status = "Scheduled";
     }
 
-    public void scheduleAppointment(){}
-    public void cancelAppointment(){}
-    public void getAppointmentDetails(){}
+    public void cancelAppointment(){
+        status = "Cancelled";
+    }
+    public void getAppointmentDetails(){
+        System.out.println("=== Appointment information ===");
+        System.out.println("Appointment ID: "+appointmentId);
+        System.out.println("Patient Name: "+patient.getName());
+        System.out.println("Doctor Name: "+doctor.getName());
+        System.out.println("Date & Time: "+dateTime);
+        System.out.println("Status: "+status);
+
+
+    }
 }
