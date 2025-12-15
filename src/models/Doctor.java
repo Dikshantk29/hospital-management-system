@@ -27,6 +27,10 @@ public class Doctor extends Person {
         this.availableHours = (availableHours == null) ? new HashMap<>() : availableHours;
     }
 
+    public String getSpecialization() {
+        return specialization;
+    }
+
     @Override
     public void displayInfo() {
         System.out.println("=== Doctor Information ===");
@@ -52,7 +56,7 @@ public class Doctor extends Person {
     public void consultPatient(Patient patient, String notes, boolean updateHistory) {
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         String time = LocalDateTime.now().format(fmt);
-        String consultationNote = "Dr. " + getName() + " consulted patient on " + time + ": " + notes;
+        String consultationNote = getName() + " consulted patient on " + time + ": " + notes;
 
         if (updateHistory) {
             patient.addMedicalHistory(consultationNote);

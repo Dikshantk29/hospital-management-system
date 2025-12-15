@@ -18,16 +18,16 @@ public class Appointment {
         this.status = "Scheduled";
     }
 
-    public void cancelAppointment(){
+    public void cancelAppointment() {
         status = "Cancelled";
     }
-    public void getAppointmentDetails(){
+    public void getAppointmentDetails() {
         System.out.println("=== Appointment information ===");
-        System.out.println("Appointment ID: "+appointmentId);
-        System.out.println("Patient Name: "+patient.getName());
-        System.out.println("Doctor Name: "+doctor.getName());
-        System.out.println("Date & Time: "+dateTime);
-        System.out.println("Status: "+status);
+        System.out.println("Appointment ID: " + appointmentId);
+        System.out.println("Patient Name: " + patient.getName());
+        System.out.println("Doctor Name: " + doctor.getName());
+        System.out.println("Date & Time: " + dateTime);
+        System.out.println("Status: " + status);
 
 
     }
